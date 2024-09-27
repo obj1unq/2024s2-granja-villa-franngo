@@ -14,5 +14,5 @@ program farmville {
  	game.addVisual(new Maiz()) // Se agrega a modo de prueba
  	
  	//  COMIENZA
-	game.start()
+	game.start()//a
 }
