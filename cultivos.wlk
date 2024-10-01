@@ -129,3 +129,27 @@ class Tomaco {
 	}
 
 }
+
+object creadorMaiz {
+
+	method nuevoCultivo(posicion) {
+		return new Maiz(position = posicion)
+	}
+
+}
+
+object creadorTrigo {
+
+	method nuevoCultivo(posicion) {
+		return new Trigo(position = posicion)
+	}
+
+}
+
+object creadorTomaco {
+
+	method nuevoCultivo(posicion) {
+		return new Tomaco(position = posicion)
+	}
+	
+}

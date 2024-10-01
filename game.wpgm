@@ -13,9 +13,9 @@ program farmville {
 	game.addVisualCharacter(hector)
 
 	//ACCIONES HECTOR
-	keyboard.m().onPressDo({hector.plantarMaiz()})
-	keyboard.t().onPressDo({hector.plantarTrigo()})
-	keyboard.o().onPressDo({hector.plantarTomaco()})
+	keyboard.m().onPressDo({hector.plantar(creadorMaiz)})
+	keyboard.t().onPressDo({hector.plantar(creadorTrigo)})
+	keyboard.o().onPressDo({hector.plantar(creadorTomaco)})
 	keyboard.r().onPressDo({hector.regar()})
 	keyboard.c().onPressDo({hector.cosechar()})
  	

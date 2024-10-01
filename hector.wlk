@@ -12,26 +12,21 @@ object hector {
 		cultivos.any({cultivo => cultivo.position().x() == posicion.x() && cultivo.position().y() == posicion.y()})
 	}
 
-	method plantarMaiz() {
+	method plantar(creadorCultivo) {
 		self.validarPlantar()
-		const nuevoMaiz = new Maiz(position = self.position())
-		game.addVisual(nuevoMaiz)
-		cultivos.add(nuevoMaiz)
+		const nuevoCultivo = creadorCultivo.nuevoCultivo(self.position()) //se usan objetos creadores polimórficos
+		game.addVisual(nuevoCultivo)
+		cultivos.add(nuevoCultivo)
 	}
 
-	method plantarTrigo() {
-		self.validarPlantar()
-		const nuevoTrigo = new Trigo(position = self.position())
-		game.addVisual(nuevoTrigo)
-		cultivos.add(nuevoTrigo)
-	}
-
+	/*
 	method plantarTomaco() {
 		self.validarPlantar()
 		const nuevoTomaco = new Tomaco(position = self.position())
 		game.addVisual(nuevoTomaco)
 		cultivos.add(nuevoTomaco)
 	}
+	*/
 
 	method validarPlantar() {
 		if(self.hayCultivoEn(self.position())) {
@@ -53,15 +48,15 @@ object hector {
 
 	method cosechar() {
 		self.validarCosecha()
+		const cultivo = game.uniqueCollider(self)
+		game.removeVisual(cultivo)
+		cultivos.remove(cultivo)
+		cosechados.add(cultivo)
 	}
 
 	method validarCosecha() {
 		self.validarPresencia()
 		self.validarAdultez()
-		const cultivo = game.uniqueCollider(self)
-		game.removeVisual(cultivo)
-		cultivos.remove(cultivo)
-		cosechados.add(cultivo)
 	}
 
 	method validarPresencia() {
