@@ -5,6 +5,7 @@ object hector {
 	var property position = game.center()
 	const property image = "player.png"
 	const property cultivos = []
+	const property cosechados = []
 
 	method hayCultivoEn(posicion) {
 		return 
@@ -47,6 +48,32 @@ object hector {
 	method validarRegar() {
 		if(!self.hayCultivoEn(self.position())) {
 			self.error("No se puede regar acá debido a que no hay ninguna planta")
+		}
+	}
+
+	method cosechar() {
+		self.validarCosecha()
+	}
+
+	method validarCosecha() {
+		self.validarPresencia()
+		self.validarAdultez()
+		const cultivo = game.uniqueCollider(self)
+		game.removeVisual(cultivo)
+		cultivos.remove(cultivo)
+		cosechados.add(cultivo)
+	}
+
+	method validarPresencia() {
+		if(game.colliders(self).isEmpty()) {
+			self.error("No se puede cosechar acá ya que no hay ningún cultivo")
+		}
+	}
+
+	method validarAdultez() {
+		const cultivo = game.uniqueCollider(self)
+		if(!cultivo.esCosechable()) {
+			self.error("No se puede cosechar este cultivo porque aún no está listo")
 		}
 	}
 

@@ -10,6 +10,10 @@ class Maiz {
 		etapa.serRegada(self)
 	}
 
+	method esCosechable() {
+		return etapa.esCosechable()
+	}
+
 }
 
 object bebe {
@@ -19,11 +23,19 @@ object bebe {
 		maiz.etapa(adulta)
 	}
 
+	method esCosechable() {
+		return false
+	}
+
 }
 
 object adulta {
 
 	method serRegada(maiz) { }
+
+	method esCosechable() {
+		return true
+	}
 
 }
 
@@ -36,6 +48,10 @@ class Trigo {
 		etapa.serRegada(self)
 	}
 
+	method esCosechable() {
+		return etapa.esCosechable()
+	}
+
 }
 
 object etapa0 {
@@ -43,6 +59,10 @@ object etapa0 {
 	method serRegada(trigo) {
 		trigo.etapa(etapa1)
 		trigo.image("wheat_1.png")
+	}
+
+	method esCosechable() {
+		return false
 	}
 
 }
@@ -54,6 +74,10 @@ object etapa1 {
 		trigo.image("wheat_2.png")
 	}
 
+	method esCosechable() {
+		return false
+	}
+
 }
 object etapa2 {
 
@@ -62,12 +86,20 @@ object etapa2 {
 		trigo.image("wheat_3.png")
 	}
 
+	method esCosechable() {
+		return true
+	}
+
 }
 object etapa3 {
 
 	method serRegada(trigo) {
 		trigo.etapa(etapa0)
 		trigo.image("wheat_0.png")
+	}
+
+	method esCosechable() {
+		return true
 	}
 
 }
@@ -90,6 +122,10 @@ class Tomaco {
 		if( game.getObjectsIn(posArriba).size()>0 ) {
 			self.error(null)
 		}
+	}
+
+	method esCosechable() {
+		return true
 	}
 
 }
