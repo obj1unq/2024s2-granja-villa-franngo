@@ -20,6 +20,7 @@ object hector {
 	}
 
 	method plantarMaiz() {
+		self.validarPlantar()
 		const nuevoMaiz = new Maiz()
 		nuevoMaiz.position(self.position())
 		game.addVisual(nuevoMaiz)
@@ -27,6 +28,7 @@ object hector {
 	}
 
 	method plantarTrigo() {
+		self.validarPlantar()
 		const nuevoTrigo = new Trigo()
 		nuevoTrigo.position(self.position())
 		game.addVisual(nuevoTrigo)
@@ -34,10 +36,29 @@ object hector {
 	}
 
 	method plantarTomaco() {
+		self.validarPlantar()
 		const nuevoTomaco = new Tomaco()
 		nuevoTomaco.position(self.position())
 		game.addVisual(nuevoTomaco)
 		cultivos.add(nuevoTomaco)
+	}
+
+	method validarPlantar() {
+		if(self.hayCultivoEn(self.position())) {
+			self.error("No se puede plantar acá debido a que ya hay otra planta")
+		}
+	}
+
+	method regar() {
+		self.validarRegar()
+		const plantaAca = game.uniqueCollider(self)
+		plantaAca.serRegada()
+	}
+
+	method validarRegar() {
+		if(!self.hayCultivoEn(self.position())) {
+			self.error("No se puede regar acá debido a que no hay ninguna planta")
+		}
 	}
 
 }

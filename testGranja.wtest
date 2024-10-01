@@ -1,7 +1,21 @@
+import wollok.game.*
+import hector.*
+import cultivos.*
+
 describe "tests" {
 
-  test "test1" {
-    
+  test "sembrado de cultivos" {
+    assert.equals([], hector.cultivos())
+    assert.notThat(hector.hayCultivoEn(hector.position()))
+    hector.plantarMaiz()
+    assert.that(hector.hayCultivoEn(hector.position()))
+    assert.throwsException({hector.plantarTomaco()})
+    assert.equals(1, hector.cultivos().size())
+    hector.position(game.at( hector.position().x()+1, hector.position().y() ))
+    assert.doesNotThrowException({hector.plantarTomaco()})
+    assert.that(hector.hayCultivoEn(hector.position()))
+    assert.equals(2, hector.cultivos().size())
+    assert.throwsException({hector.plantarTomaco()})
   }
 
 }

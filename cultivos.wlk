@@ -8,6 +8,10 @@ class Maiz {
 		return "corn_baby.png"
 	}
 
+	method serRegada() {
+		
+	}
+
 }
 
 class Trigo {
@@ -18,6 +22,10 @@ class Trigo {
 		return "wheat_0.png"
 	}
 
+	method serRegada() {
+		
+	}
+
 }
 
 class Tomaco {
@@ -26,6 +34,10 @@ class Tomaco {
 	method image() {
 		// TODO: hacer que devuelva la imagen que corresponde
 		return "tomaco.png"
+	}
+
+	method serRegada() {
+		
 	}
 
 }

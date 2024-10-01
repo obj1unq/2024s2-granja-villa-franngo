@@ -9,14 +9,15 @@ program farmville {
 	game.width(10)
 	game.ground("ground.png")
 
-	//  VISUALES
+	//  VISUALES/MOVIMIENTO
 	game.addVisualCharacter(hector)
 
 	//ACCIONES HECTOR
 	keyboard.m().onPressDo({hector.plantarMaiz()})
 	keyboard.t().onPressDo({hector.plantarTrigo()})
 	keyboard.o().onPressDo({hector.plantarTomaco()})
+	keyboard.r().onPressDo({hector.regar()})
  	
  	//  COMIENZA
-	game.start()//a
+	game.start()
 }
