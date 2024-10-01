@@ -6,14 +6,6 @@ object hector {
 	const property image = "player.png"
 	const property cultivos = []
 
-	method anchoGranja() {
-		return game.width()
-	}
-
-	method largoGranja() {
-		return game.height()
-	}
-
 	method hayCultivoEn(posicion) {
 		return 
 		cultivos.any({cultivo => cultivo.position().x() == posicion.x() && cultivo.position().y() == posicion.y()})
@@ -56,6 +48,18 @@ object hector {
 		if(!self.hayCultivoEn(self.position())) {
 			self.error("No se puede regar acá debido a que no hay ninguna planta")
 		}
+	}
+
+}
+
+object granja {
+
+	method ancho() {
+		return game.width()
+	}
+
+	method largo() {
+		return game.height()
 	}
 
 }

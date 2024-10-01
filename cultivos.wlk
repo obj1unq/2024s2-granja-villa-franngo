@@ -81,7 +81,15 @@ class Tomaco {
 	}
 
 	method serRegada() {
-		self.position( game.at( position.x(), (position.y()+1).min(hector.largoGranja()-1) ) ) //me tendría que fijar que no haya otra!
+		self.validarAusenciaArriba()
+		self.position( game.at( position.x(), (position.y()+1).min(granja.largo()-1) ) )
+	}
+
+	method validarAusenciaArriba() {
+		const posArriba = game.at(position.x(), position.y()+1)
+		if( game.getObjectsIn(posArriba).size()>0 ) {
+			self.error(null)
+		}
 	}
 
 }
