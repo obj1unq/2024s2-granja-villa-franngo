@@ -21,24 +21,21 @@ object hector {
 
 	method plantarMaiz() {
 		self.validarPlantar()
-		const nuevoMaiz = new Maiz()
-		nuevoMaiz.position(self.position())
+		const nuevoMaiz = new Maiz(position = self.position())
 		game.addVisual(nuevoMaiz)
 		cultivos.add(nuevoMaiz)
 	}
 
 	method plantarTrigo() {
 		self.validarPlantar()
-		const nuevoTrigo = new Trigo()
-		nuevoTrigo.position(self.position())
+		const nuevoTrigo = new Trigo(position = self.position())
 		game.addVisual(nuevoTrigo)
 		cultivos.add(nuevoTrigo)
 	}
 
 	method plantarTomaco() {
 		self.validarPlantar()
-		const nuevoTomaco = new Tomaco()
-		nuevoTomaco.position(self.position())
+		const nuevoTomaco = new Tomaco(position = self.position())
 		game.addVisual(nuevoTomaco)
 		cultivos.add(nuevoTomaco)
 	}

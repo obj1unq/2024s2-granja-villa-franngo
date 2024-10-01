@@ -1,9 +1,10 @@
 import wollok.game.*
+import hector.*
 
 class Maiz {
 	var property position = null
-	var property etapa = bebe
 	var property image = "corn_baby.png"
+	var property etapa = bebe
 
 	method serRegada() {
 		etapa.serRegada(self)
@@ -28,14 +29,45 @@ object adulta {
 
 class Trigo {
 	var property position = null
-
-	method image() {
-		// TODO: hacer que devuelva la imagen que corresponde
-		return "wheat_0.png"
-	}
+	var property image = "wheat_0.png"
+	var property etapa = etapa0
 
 	method serRegada() {
-		
+		etapa.serRegada(self)
+	}
+
+}
+
+object etapa0 {
+
+	method serRegada(trigo) {
+		trigo.etapa(etapa1)
+		trigo.image("wheat_1.png")
+	}
+
+}
+
+object etapa1 {
+
+	method serRegada(trigo) {
+		trigo.etapa(etapa2)
+		trigo.image("wheat_2.png")
+	}
+
+}
+object etapa2 {
+
+	method serRegada(trigo) {
+		trigo.etapa(etapa3)
+		trigo.image("wheat_3.png")
+	}
+
+}
+object etapa3 {
+
+	method serRegada(trigo) {
+		trigo.etapa(etapa0)
+		trigo.image("wheat_0.png")
 	}
 
 }
@@ -49,7 +81,7 @@ class Tomaco {
 	}
 
 	method serRegada() {
-		
+		self.position( game.at( position.x(), (position.y()+1).min(hector.largoGranja()-1) ) ) //me tendría que fijar que no haya otra!
 	}
 
 }
