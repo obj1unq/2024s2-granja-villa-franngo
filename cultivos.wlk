@@ -2,15 +2,27 @@ import wollok.game.*
 
 class Maiz {
 	var property position = null
-	
-	method image() {
-		// TODO: hacer que devuelva la imagen que corresponde
-		return "corn_baby.png"
-	}
+	var property etapa = bebe
+	var property image = "corn_baby.png"
 
 	method serRegada() {
-		
+		etapa.serRegada(self)
 	}
+
+}
+
+object bebe {
+
+	method serRegada(maiz) {
+		maiz.image("corn_adult.png")
+		maiz.etapa(adulta)
+	}
+
+}
+
+object adulta {
+
+	method serRegada(maiz) { }
 
 }
 
