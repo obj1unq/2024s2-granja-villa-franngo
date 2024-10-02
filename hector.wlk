@@ -82,7 +82,7 @@ object hector {
 
 	method validarVender() {
 		self.validarPresenciaMercado()
-		const mercado = game.uniqueCollider(self)
+		const mercado = game.uniqueCollider(self) //acá falla el test
 		self.validarOroMercado(mercado)
 	}
 

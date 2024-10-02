@@ -1,6 +1,7 @@
 import wollok.game.*
 import hector.*
 import cultivos.*
+import extras.*
 
 describe "tests" {
 
@@ -46,7 +47,8 @@ describe "tests" {
     assert.equals(3, hector.cosechados().size())
   }
 
-  test "ventas" {
+/*
+  test "ventas (sin mercados)" {
     hector.plantar(creadorTomaco)
     hector.cosechar()
     hector.plantar(creadorMaiz)
@@ -66,6 +68,64 @@ describe "tests" {
     hector.vender()
     assert.equals(0, hector.cosechados().size())
     assert.equals(530, hector.oroAcumulado())
+  }
+*/
+
+  test "ventas (con mercados)" {
+    const mercado1= new Mercado(position = game.at(9,9), oroDisponible = 300) //mercancias default (una [])
+    game.addVisual(mercado1)
+    hector.mercados().add(mercado1)
+    const mercado2 = new Mercado(position = game.at(8,3), oroDisponible = 1000) //mercancias default (una [])
+    game.addVisual(mercado2)
+	  hector.mercados().add(mercado2)
+    const mercado3 = new Mercado(position = game.at(2,2), oroDisponible = 100)//mercancias default (una [])
+    game.addVisual(mercado3)
+	  hector.mercados().add(mercado3)
+    hector.position(game.at(4,4))
+    assert.throwsException({hector.vender()}) //no está donde haya un mercado
+    hector.plantar(creadorTomaco)
+    hector.cosechar()
+    hector.plantar(creadorMaiz)
+    hector.regar()
+    hector.cosechar()
+    hector.plantar(creadorTrigo)
+    hector.regar()
+    hector.regar()
+    hector.cosechar()
+    hector.plantar(creadorTrigo)
+    hector.regar()
+    hector.regar()
+    hector.regar()
+    hector.cosechar() //el total de lo cosechado tiene un valor de 530
+    hector.position(game.at(8,3)) //hector a la celda donde está el mercado2
+    assert.that(hector.hayMercadoEn(hector.position()))
+    assert.doesNotThrowException({hector.vender()})
+    assert.equals(0, hector.cosechados().size())
+    assert.equals(530, hector.oroAcumulado())
+    assert.equals(470, mercado2.oroDisponible())
+    assert.equals(4, mercado2.mercancias().size())
+    hector.position(game.at(7,3))
+    hector.plantar(creadorTrigo)
+    hector.regar()
+    hector.regar()
+    hector.regar()
+    hector.cosechar()
+    hector.plantar(creadorTrigo)
+    hector.regar()
+    hector.regar()
+    hector.regar()
+    hector.cosechar()
+    hector.plantar(creadorTrigo)
+    hector.regar()
+    hector.regar()
+    hector.regar()
+    hector.cosechar() //el total de lo cosechado tiene un valor de 600
+    hector.position(game.at(8,3))
+    assert.throwsException({hector.vender()})
+    assert.equals(3, hector.cosechados().size())
+    assert.equals(530, hector.oroAcumulado())
+    assert.equals(470, mercado2.oroDisponible())
+    assert.equals(4, mercado2.mercancias().size())
   }
 
 }
