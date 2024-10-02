@@ -36,14 +36,14 @@ class Aspersor {
 
     method objetosAledanhos() {
         const objs = []
-        objs.addAll( game.getObjectsIn(game.at(position.x() , position.y()+1)) )
-        objs.addAll( game.getObjectsIn(game.at(position.x()+1 , position.y()+1)) )
-        objs.addAll( game.getObjectsIn(game.at(position.x()+1 , position.y())) )
-        objs.addAll( game.getObjectsIn(game.at(position.x()+1 , position.y()-1)) )
-        objs.addAll( game.getObjectsIn(game.at(position.x() , position.y()-1)) )
-        objs.addAll( game.getObjectsIn(game.at(position.x()-1 , position.y()-1)) )
-        objs.addAll( game.getObjectsIn(game.at(position.x()-1 , position.y())) )
-        objs.addAll( game.getObjectsIn(game.at(position.x()-1 , position.y()+1)) )
+        objs.addAll( game.getObjectsIn(position.up(1)) )
+        objs.addAll( game.getObjectsIn(position.up(1).right(1)) )
+        objs.addAll( game.getObjectsIn(position.right(1)) )
+        objs.addAll( game.getObjectsIn(position.right(1).down(1)) )
+        objs.addAll( game.getObjectsIn(position.down(1)) )
+        objs.addAll( game.getObjectsIn(position.left(1).down(1)) )
+        objs.addAll( game.getObjectsIn(position.left(1)) )
+        objs.addAll( game.getObjectsIn(position.left(1).up(1)) )
         return objs
     }
 
