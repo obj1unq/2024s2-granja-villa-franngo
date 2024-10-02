@@ -14,6 +14,10 @@ class Maiz {
 		return etapa.esCosechable()
 	}
 
+	method serVendido(granjero) {
+		granjero.sumarOro(150)
+	}
+
 }
 
 object bebe {
@@ -52,9 +56,15 @@ class Trigo {
 		return etapa.esCosechable()
 	}
 
+	method serVendido(granjero) {
+		const cantidad = (etapa.numeroEtapa()-1).max(0) * 100
+		granjero.sumarOro(cantidad)
+	}
+
 }
 
 object etapa0 {
+	const property numeroEtapa = 0
 
 	method serRegada(trigo) {
 		trigo.etapa(etapa1)
@@ -68,6 +78,7 @@ object etapa0 {
 }
 
 object etapa1 {
+	const property numeroEtapa = 1
 
 	method serRegada(trigo) {
 		trigo.etapa(etapa2)
@@ -79,7 +90,9 @@ object etapa1 {
 	}
 
 }
+
 object etapa2 {
+	const property numeroEtapa = 2
 
 	method serRegada(trigo) {
 		trigo.etapa(etapa3)
@@ -91,7 +104,9 @@ object etapa2 {
 	}
 
 }
+
 object etapa3 {
+	const property numeroEtapa = 3
 
 	method serRegada(trigo) {
 		trigo.etapa(etapa0)
@@ -126,6 +141,10 @@ class Tomaco {
 
 	method esCosechable() {
 		return true
+	}
+
+	method serVendido(granjero) {
+		granjero.sumarOro(80)
 	}
 
 }

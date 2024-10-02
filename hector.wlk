@@ -6,6 +6,7 @@ object hector {
 	const property image = "player.png"
 	const property cultivos = []
 	const property cosechados = []
+	var oroAcumulado = 0
 
 	method hayCultivoEn(posicion) {
 		return 
@@ -18,15 +19,6 @@ object hector {
 		game.addVisual(nuevoCultivo)
 		cultivos.add(nuevoCultivo)
 	}
-
-	/*
-	method plantarTomaco() {
-		self.validarPlantar()
-		const nuevoTomaco = new Tomaco(position = self.position())
-		game.addVisual(nuevoTomaco)
-		cultivos.add(nuevoTomaco)
-	}
-	*/
 
 	method validarPlantar() {
 		if(self.hayCultivoEn(self.position())) {
@@ -70,6 +62,19 @@ object hector {
 		if(!cultivo.esCosechable()) {
 			self.error("No se puede cosechar este cultivo porque aún no está listo")
 		}
+	}
+
+	method vender() {
+		cosechados.forEach({cosechado => cosechado.serVendido(self)}) //acá debemos acumular en el acumulador
+		cosechados.clear()
+	}
+
+	method sumarOro(cantidad) {
+		oroAcumulado += cantidad
+	}
+
+	method enunciarPosesiones() {
+		game.say(self, "Tengo " + cosechados.size() + " plantas para vender/n y " + oroAcumulado + " monedas de oro")
 	}
 
 }
