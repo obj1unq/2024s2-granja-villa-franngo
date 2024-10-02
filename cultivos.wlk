@@ -5,6 +5,7 @@ class Maiz {
 	var property position = null
 	var property image = "corn_baby.png"
 	var property etapa = bebe
+	const property valor = 150
 
 	method serRegada() {
 		etapa.serRegada(self)
@@ -15,7 +16,7 @@ class Maiz {
 	}
 
 	method serVendido(granjero) {
-		granjero.sumarOro(150)
+		granjero.sumarOro(valor)
 	}
 
 }
@@ -56,9 +57,12 @@ class Trigo {
 		return etapa.esCosechable()
 	}
 
+	method valor() {
+		return (etapa.numeroEtapa()-1).max(0) * 100
+	}
+
 	method serVendido(granjero) {
-		const cantidad = (etapa.numeroEtapa()-1).max(0) * 100
-		granjero.sumarOro(cantidad)
+		granjero.sumarOro(self.valor())
 	}
 
 }
@@ -121,6 +125,7 @@ object etapa3 {
 
 class Tomaco {
 	var property position = null
+	const property valor = 80
 
 	method image() {
 		// TODO: hacer que devuelva la imagen que corresponde
@@ -144,7 +149,7 @@ class Tomaco {
 	}
 
 	method serVendido(granjero) {
-		granjero.sumarOro(80)
+		granjero.sumarOro(valor)
 	}
 
 }

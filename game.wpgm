@@ -12,13 +12,13 @@ program farmville {
 
 	//  VISUALES/MOVIMIENTO
 	game.addVisualCharacter(hector)
-	const mercado1 = new Mercado(position = game.at(9,9))
+	const mercado1 = new Mercado(position = game.at(9,9), oroDisponible = 300)
 	hector.mercados().add(mercado1)
 	game.addVisual(mercado1)
-	const mercado2 = new Mercado(position = game.at(8,3))
+	const mercado2 = new Mercado(position = game.at(8,3), oroDisponible = 1000)
 	hector.mercados().add(mercado2)
 	game.addVisual(mercado2)
-	const mercado3 = new Mercado(position = game.at(2,2))
+	const mercado3 = new Mercado(position = game.at(2,2), oroDisponible = 100)
 	hector.mercados().add(mercado3)
 	game.addVisual(mercado3)
 

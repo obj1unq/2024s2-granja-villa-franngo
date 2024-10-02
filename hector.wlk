@@ -72,8 +72,31 @@ object hector {
 	}
 
 	method vender() {
-		cosechados.forEach({cosechado => cosechado.serVendido(self)}) //acá debemos acumular en el acumulador
+		self.validarVender()
+		const mercado = game.uniqueCollider(self)
+		const sumaProductos = cosechados.sum({cosechado => cosechado.valor()})
+		mercado.comprar(cosechados, sumaProductos)
+		cosechados.forEach({cosechado => cosechado.serVendido(self)})
 		cosechados.clear()
+	}
+
+	method validarVender() {
+		self.validarPresenciaMercado()
+		const mercado = game.uniqueCollider(self)
+		self.validarOroMercado(mercado)
+	}
+
+	method validarPresenciaMercado() {
+		if(!self.hayMercadoEn(self.position())) {
+			self.error("No se puede vender, ya que no hay un mercado acá")
+		}
+	}
+
+	method validarOroMercado(mercado) {
+		const sumaProductos = cosechados.sum({cosechado => cosechado.valor()})
+		if(mercado.oroDisponible() < sumaProductos) {
+			self.error("No se puede vender, ya que este mercado no tiene oro suficiente")
+		}
 	}
 
 	method sumarOro(cantidad) {

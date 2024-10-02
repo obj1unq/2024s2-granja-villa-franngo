@@ -5454,3 +5454,20 @@
 {"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":107,"timestamp":"2024-10-02T03:35:05.634Z"}
 {"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":102,"timestamp":"2024-10-02T03:35:05.736Z"}
 {"exitCode":"SIGHUP","level":"info","message":"👾 Game executed game.farmville on /home/fran/Documents/archivos-facu/2doCuatri2024/prog-con-objetosI/clase-9-clases-y-wollok-game/2024s2-granja-villa-franngo","timeElapsed":88850,"timestamp":"2024-10-02T03:37:44.905Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":401,"timestamp":"2024-10-02T04:44:11.293Z"}
+{"level":"info","message":"onRequest - WORKSPACE_URI:file:///home/fran/Documents/archivos-facu/2doCuatri2024/prog-con-objetosI/clase-9-clases-y-wollok-game/2024s2-granja-villa-franngo","timestamp":"2024-10-02T04:44:11.300Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":211,"timestamp":"2024-10-02T04:44:11.517Z"}
+{"level":"info","message":"⌛ Validating extras.wlk","timeElapsed":299,"timestamp":"2024-10-02T04:44:11.821Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":351,"timestamp":"2024-10-02T04:44:12.175Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":260,"timestamp":"2024-10-02T04:44:12.438Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":258,"timestamp":"2024-10-02T04:44:12.700Z"}
+{"level":"info","message":"⌛ Validating extras.wlk","timeElapsed":194,"timestamp":"2024-10-02T04:44:12.898Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":114,"timestamp":"2024-10-02T04:44:13.013Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":111,"timestamp":"2024-10-02T04:44:13.132Z"}
+{"level":"info","message":"⌛ Validating hector.wlk","timeElapsed":105,"timestamp":"2024-10-02T04:44:13.238Z"}
+{"level":"info","message":"⌛ Validating cultivos.wlk","timeElapsed":119,"timestamp":"2024-10-02T04:44:13.359Z"}
+{"level":"info","message":"⌛ Validating test.wtest","timeElapsed":111,"timestamp":"2024-10-02T04:44:13.471Z"}
+{"level":"info","message":"⌛ Validating game.wpgm","timeElapsed":124,"timestamp":"2024-10-02T04:44:13.595Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":223,"timestamp":"2024-10-02T04:44:36.061Z"}
+{"level":"info","message":"⌛ Validating extras.wlk","timeElapsed":137,"timestamp":"2024-10-02T04:44:36.199Z"}
+{"level":"info","message":"⌛ Building environment","timeElapsed":195,"timestamp":"2024-10-02T04:44:38.669Z"}
