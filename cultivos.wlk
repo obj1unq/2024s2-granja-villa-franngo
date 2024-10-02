@@ -134,11 +134,11 @@ class Tomaco {
 
 	method serRegada() {
 		self.validarAusenciaArriba()
-		self.position( game.at( position.x(), (position.y()+1).min(granja.largo()-1) ) )
+		position = game.at( position.x(), (position.y()+1).min(granja.largo()-1) )
 	}
 
 	method validarAusenciaArriba() {
-		const posArriba = game.at(position.x(), position.y()+1)
+		const posArriba = position.up(1)
 		if( game.getObjectsIn(posArriba).size()>0 ) {
 			self.error(null)
 		}
@@ -153,6 +153,8 @@ class Tomaco {
 	}
 
 }
+
+//objetos creadores
 
 object creadorMaiz {
 

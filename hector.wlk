@@ -12,12 +12,12 @@ object hector {
 
 	method hayCultivoEn(posicion) {
 		return 
-		cultivos.any({cultivo => cultivo.position().x() == posicion.x() && cultivo.position().y() == posicion.y()})
+		cultivos.any({cultivo => cultivo.position() == posicion})
 	}
 
 	method hayMercadoEn(posicion) {
 		return
-		mercados.any({mercado => mercado.position().x() == posicion.x() && mercado.position().y() == posicion.y()})
+		mercados.any({mercado => mercado.position() == posicion})
 	}
 
 	method plantar(creadorCultivo) {
@@ -62,7 +62,8 @@ object hector {
 
 	method validarCosecha() {
 		self.validarPresenciaParaCosechar()
-		self.validarAdultez()
+		const cultivo = game.uniqueCollider(self)
+		self.validarAdultez(cultivo)
 	}
 
 	method validarPresenciaParaCosechar() {
@@ -71,8 +72,7 @@ object hector {
 		}
 	}
 
-	method validarAdultez() {
-		const cultivo = game.uniqueCollider(self)
+	method validarAdultez(cultivo) {
 		if(!cultivo.esCosechable()) {
 			self.error("No se puede cosechar este cultivo porque aún no está listo")
 		}
@@ -131,7 +131,7 @@ object hector {
 		}
 	}
 
-	method serRegada() {}
+	method serRegada() {} //polimorfismo necesario para que funcione el aspersor
 
 }
 

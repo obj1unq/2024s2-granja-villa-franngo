@@ -19,7 +19,7 @@ class Mercado {
         mercancias.addAll(productos)
     }
 
-    method serRegada() {}
+    method serRegada() {} //polimorfismo necesario para que funcione el aspersor
 
 }
 
@@ -51,6 +51,6 @@ class Aspersor {
         self.objetosAledanhos().forEach({objeto => objeto.serRegada()})
     }
 
-    method serRegada() {}
+    method serRegada() {} //polimorfismo necesario para que funcione el aspersor
     
 }
