@@ -1,6 +1,7 @@
 import wollok.game.*
 import hector.*
 import cultivos.*
+import extras.*
 
 program farmville {
 	//  CONFIG	
@@ -11,6 +12,15 @@ program farmville {
 
 	//  VISUALES/MOVIMIENTO
 	game.addVisualCharacter(hector)
+	const mercado1 = new Mercado(position = game.at(9,9))
+	hector.mercados().add(mercado1)
+	game.addVisual(mercado1)
+	const mercado2 = new Mercado(position = game.at(8,3))
+	hector.mercados().add(mercado2)
+	game.addVisual(mercado2)
+	const mercado3 = new Mercado(position = game.at(2,2))
+	hector.mercados().add(mercado3)
+	game.addVisual(mercado3)
 
 	//ACCIONES HECTOR
 	keyboard.m().onPressDo({hector.plantar(creadorMaiz)})

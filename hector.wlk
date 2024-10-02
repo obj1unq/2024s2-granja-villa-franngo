@@ -1,16 +1,23 @@
 import wollok.game.*
 import cultivos.*
+import extras.*
 
 object hector {
-	var property position = game.center()
+	var property position = game.at(5,5)
 	const property image = "player.png"
 	const property cultivos = []
 	const property cosechados = []
 	var oroAcumulado = 0
+	const property mercados = []
 
 	method hayCultivoEn(posicion) {
 		return 
 		cultivos.any({cultivo => cultivo.position().x() == posicion.x() && cultivo.position().y() == posicion.y()})
+	}
+
+	method hayMercadoEn(posicion) {
+		return
+		mercados.any({mercado => mercado.position().x() == posicion.x() && mercado.position().y() == posicion.y()})
 	}
 
 	method plantar(creadorCultivo) {
@@ -21,8 +28,8 @@ object hector {
 	}
 
 	method validarPlantar() {
-		if(self.hayCultivoEn(self.position())) {
-			self.error("No se puede plantar acá debido a que ya hay otra planta")
+		if( self.hayCultivoEn(self.position()) || self.hayMercadoEn(self.position()) ) {
+			self.error("No se puede plantar acá debido a que ya hay otra planta o un mercado")
 		}
 	}
 
