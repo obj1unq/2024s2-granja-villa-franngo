@@ -46,4 +46,26 @@ describe "tests" {
     assert.equals(3, hector.cosechados().size())
   }
 
+  test "ventas" {
+    hector.plantar(creadorTomaco)
+    hector.cosechar()
+    hector.plantar(creadorMaiz)
+    hector.regar()
+    hector.cosechar()
+    hector.plantar(creadorTrigo)
+    hector.regar()
+    hector.regar()
+    hector.cosechar()
+    hector.plantar(creadorTrigo)
+    hector.regar()
+    hector.regar()
+    hector.regar()
+    hector.cosechar()
+    assert.equals(4, hector.cosechados().size())
+    assert.equals(0, hector.oroAcumulado())
+    hector.vender()
+    assert.equals(0, hector.cosechados().size())
+    assert.equals(530, hector.oroAcumulado())
+  }
+
 }

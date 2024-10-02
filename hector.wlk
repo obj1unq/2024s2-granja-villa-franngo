@@ -73,6 +73,10 @@ object hector {
 		oroAcumulado += cantidad
 	}
 
+	method oroAcumulado() {
+		return oroAcumulado
+	}
+
 	method enunciarPosesiones() {
 		game.say(self, "Tengo " + cosechados.size() + " plantas para vender/n y " + oroAcumulado + " monedas de oro")
 	}
