@@ -27,21 +27,28 @@ object hector {
 		cultivos.add(nuevoCultivo)
 	}
 
+	//se pasó de preguntar si hayCultivoEn(self.position()) && hayMercadoEn(self.position()) a directamente preguntar si hay algo en la
+	//celda actual (además de hector), ya que también se puede dar que haya un aspersor, los cuales no tenemos recordados.
+	//si hay cualquier cosa (además de hector) en la celda actual, entonces no es lugar para plantar
 	method validarPlantar() {
-		if( self.hayCultivoEn(self.position()) || self.hayMercadoEn(self.position()) ) {
-			self.error("No se puede plantar acá debido a que ya hay otra planta o un mercado")
+		if( self.hayObjetoObstruyendoAca() ) { 
+			self.error("No se puede plantar acá debido a que ya hay otro cultivo, un mercado o un aspersor")
 		}
 	}
 
+	method hayObjetoObstruyendoAca() {
+		return game.colliders(self).size() > 0
+	}
+
 	method regar() {
-		self.validarRegar()
+		self.validarPresenciaParaRegar()
 		const plantaAca = game.uniqueCollider(self)
 		plantaAca.serRegada()
 	}
 
-	method validarRegar() {
+	method validarPresenciaParaRegar() {
 		if(!self.hayCultivoEn(self.position())) {
-			self.error("No se puede regar acá debido a que no hay ninguna planta")
+			self.error("No se puede regar acá debido a que no hay ningún cultivo")
 		}
 	}
 
@@ -54,12 +61,12 @@ object hector {
 	}
 
 	method validarCosecha() {
-		self.validarPresencia()
+		self.validarPresenciaParaCosechar()
 		self.validarAdultez()
 	}
 
-	method validarPresencia() {
-		if(game.colliders(self).isEmpty()) {
+	method validarPresenciaParaCosechar() {
+		if(!self.hayCultivoEn(self.position())) {
 			self.error("No se puede cosechar acá ya que no hay ningún cultivo")
 		}
 	}
@@ -110,6 +117,21 @@ object hector {
 	method enunciarPosesiones() {
 		game.say(self, "Tengo " + cosechados.size() + " plantas para vender/n y " + oroAcumulado + " monedas de oro")
 	}
+
+	method ponerAspersor() {
+		self.validarPonerAspersor()
+		const aspersor = new Aspersor(position = self.position())
+		game.addVisual(aspersor)
+		game.onTick(1000, "regar alrededor", {aspersor.regarAlrededor()})
+	}
+
+	method validarPonerAspersor() {
+		if( self.hayObjetoObstruyendoAca() ) { 
+			self.error("No se puede poner acá debido a que ya hay otro aspersor, un mercado o un cultivo")
+		}
+	}
+
+	method serRegada() {}
 
 }
 
