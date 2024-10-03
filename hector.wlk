@@ -2,6 +2,8 @@ import wollok.game.*
 import cultivos.*
 import extras.*
 
+//se elige la opción de tener, a lo sumo, un cultivo por celda
+
 object hector {
 	var property position = game.at(5,5)
 	const property image = "player.png"
@@ -18,6 +20,11 @@ object hector {
 	method hayMercadoEn(posicion) {
 		return
 		mercados.any({mercado => mercado.position() == posicion})
+	}
+
+	method cultivosDeParcela(posicion) {
+		const objs = game.getObjectsIn(posicion)
+		return objs.filter({obj => cultivos.contains(obj)})
 	}
 
 	method plantar(creadorCultivo) {

@@ -13,13 +13,17 @@ describe "tests" {
   test "sembrado de cultivos" {
     assert.equals([], hector.cultivos())
     assert.notThat(hector.hayCultivoEn(hector.position()))
+    assert.equals(0, hector.cultivosDeParcela(hector.position()).size())
     hector.plantar(creadorMaiz)
     assert.that(hector.hayCultivoEn(hector.position()))
+    assert.equals(1, hector.cultivosDeParcela(hector.position()).size())
     assert.throwsException({hector.plantar(creadorTomaco)})
     assert.equals(1, hector.cultivos().size())
-    hector.position(game.at( hector.position().x()+1, hector.position().y() ))
+    assert.equals(1, hector.cultivosDeParcela(hector.position()).size())
+    hector.position(hector.position().up(1))
     assert.doesNotThrowException({hector.plantar(creadorTomaco)})
     assert.that(hector.hayCultivoEn(hector.position()))
+    assert.equals(1, hector.cultivosDeParcela(hector.position()).size())
     assert.equals(2, hector.cultivos().size())
     assert.throwsException({hector.plantar(creadorTomaco)})
   }
